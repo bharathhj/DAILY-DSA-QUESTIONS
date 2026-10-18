@@ -1,6 +1,8 @@
-import os
+app.config['MYSQL_HOST'] = 'gateway01.ap-southeast-1.prod.aws.tidbcloud.com' # Replace with your TiDB host
+app.config['MYSQL_USER'] = 'your_username'
+app.config['MYSQL_PASSWORD'] = 'your_password'
+app.config['MYSQL_DB'] = 'your_db_name'
+app.config['MYSQL_PORT'] = 4000
 
-app.config['MYSQL_HOST'] = os.getenv('DB_HOST', 'localhost')
-app.config['MYSQL_USER'] = os.getenv('DB_USER', 'root')
-app.config['MYSQL_PASSWORD'] = os.getenv('DB_PASSWORD', '')
-app.config['MYSQL_DB'] = os.getenv('DB_NAME', 'your_db_name')
+# Required for TiDB Cloud SSL connection
+app.config['MYSQL_CUSTOM_OPTIONS'] = {'ssl': {'ca': '/etc/ssl/certs/ca-certificates.crt'}}
